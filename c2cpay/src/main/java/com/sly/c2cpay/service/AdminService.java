@@ -1,9 +1,6 @@
 package com.sly.c2cpay.service;
 
-import com.sly.c2cpay.pojo.Admin;
-import com.sly.c2cpay.pojo.Goods;
-import com.sly.c2cpay.pojo.ProductInfo;
-import com.sly.c2cpay.pojo.User;
+import com.sly.c2cpay.pojo.*;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Select;
 
@@ -45,7 +42,7 @@ public interface AdminService {
     /**
      * 违规用户账号封锁
      */
-    User changeStatus(int status,String userID);
+    boolean changeStatus(String userID);
 
     /**
      * 管理员删除指定id用户
@@ -76,4 +73,15 @@ public interface AdminService {
      * 删除违规商品
      */
     Integer deleteProduct(String productId);
+
+
+    /**
+     * 查看用户状态
+     */
+    Integer searchStatus(String userID);
+
+    /**
+     * 根据订单号查询销售订单
+     */
+    TradeRecord searchByTradeId(String tradeId);
 }

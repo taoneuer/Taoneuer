@@ -81,7 +81,7 @@ public class AdminController {
      * 管理员查询所有商品信息
      * @return
      */
-    @GetMapping("/find_goods")
+    @GetMapping("/goodslist")
     public List<Goods> findGoods(){
         return adminService.findGoods();
     }
@@ -105,21 +105,29 @@ public class AdminController {
      * 修改用户账号状态
      */
     @PostMapping("/changestatus")
-    public ResultInfo changeUserStatus(@RequestParam(value="status",required=true)int ustatus,
-                                       @RequestParam(value="userID",required=true)String userID,
+    public ResultInfo changeUserStatus(@RequestParam(value="userID",required=true)String userID,
                                        HttpServletRequest request)
     {
-        User u=adminService.changeStatus(ustatus,userID);
-        if(u==null)
+        boolean u=adminService.changeStatus(userID);
+        if(!u)
         {//修改失败
-            return new ResultInfo(-1, null, "用户状态修改失败", request.getRequestURI());
+            return new ResultInfo(-1, userID, "用户状态修改失败", request.getRequestURI());
         }
         else
         {//修改成功
-            return new ResultInfo(0,null,"用户状态修改成功", request.getRequestURI());
+            return new ResultInfo(0,userID,"用户状态修改成功", request.getRequestURI());
         }
     }
+    @PostMapping("/readstatus")
+    public ResultInfo readUserStatus(@RequestParam(value="userID",required=true)String userID,
+                                       HttpServletRequest request)
+    {
+        User a;
+        int u=adminService.searchStatus(userID);
 
+            return new ResultInfo(0,u,"用户状态读取成功", request.getRequestURI());
+
+    }
     /**
      * 用户账号的删除
      * @param id
@@ -127,7 +135,7 @@ public class AdminController {
      * @return
      */
     @DeleteMapping("/deleteuser")
-    public ResultInfo deleteUser(@RequestParam(value="userid") String id,HttpServletRequest request){
+    public ResultInfo deleteUser(@RequestParam(value="userID") String id,HttpServletRequest request){
         if(adminService.delete(id)==0)
             return  new ResultInfo(-1, null, "用户删除失败", request.getRequestURI());
         else
@@ -141,7 +149,7 @@ public class AdminController {
      * @return
      */
     @PostMapping("/resetpassword")
-    public ResultInfo resetPassword(@RequestParam(value="userId",required = true)String id,HttpServletRequest request)
+    public ResultInfo resetPassword(@RequestParam(value="userID",required = true)String id,HttpServletRequest request)
     {
         if(adminService.resetPassword(id))
         {
@@ -153,15 +161,16 @@ public class AdminController {
     @PostMapping("/searchProductTrade")
     public ResultInfo searchProductTrade(@RequestParam(value="productname",required =true)String name,HttpServletRequest request)
     {
-        if(adminService.searchProduct(name)==null)
+        List<ProductInfo> goodslist=adminService.searchProduct(name);
+        if(goodslist==null)
         {
-            return  new ResultInfo(-1, null, "不存在该名称的商品", request.getRequestURI());
+            return  new ResultInfo(-1, goodslist, "不存在该名称的商品", request.getRequestURI());
         }
-        else  return new ResultInfo(0,name, "存在该名称的商品", null);
+        else  return new ResultInfo(0,goodslist, "存在该名称的商品", null);
     }
 
-    @PostMapping("/searchByProductid")
-    public ResultInfo searchByProductid(@RequestParam(value="productid") String productId,HttpServletRequest request)
+    @PostMapping("/searchByProductId")
+    public ResultInfo searchByProductid(@RequestParam(value="productID") String productId,HttpServletRequest request)
     {
         if(adminService.searchByProductid(productId)==null)
         {
@@ -188,12 +197,22 @@ public class AdminController {
      * 删除违规商品
      */
     @DeleteMapping("/deleteProductID")
-    public ResultInfo deleteProductID(@RequestParam(value ="product_id",required = true) String id, HttpServletRequest request){
+    public ResultInfo deleteProductID(@RequestParam(value ="productID",required = true) String id, HttpServletRequest request){
        if(adminService.deleteProduct(id)==0)
         {
             return  new ResultInfo(-1, null, "该编号产品删除失败", request.getRequestURI());
         }
         else
             return new ResultInfo(0,id, "该编号产品删除成功", null);
+    }
+
+    @PostMapping("/searchTradeID")
+    public ResultInfo searchTradeID(@RequestParam(value="tradeID",required = true)String tradeID,HttpServletRequest request)
+    {
+        TradeRecord trade_record= adminService.searchByTradeId(tradeID);
+        if(trade_record==null)
+            return  new ResultInfo(-1, trade_record, "不存在该编号订单", request.getRequestURI());
+        else
+            return new ResultInfo(0,trade_record, "存在该编号订单", null);
     }
 }

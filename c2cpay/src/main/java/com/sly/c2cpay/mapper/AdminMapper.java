@@ -1,9 +1,6 @@
 package com.sly.c2cpay.mapper;
 
-import com.sly.c2cpay.pojo.Admin;
-import com.sly.c2cpay.pojo.Goods;
-import com.sly.c2cpay.pojo.ProductInfo;
-import com.sly.c2cpay.pojo.User;
+import com.sly.c2cpay.pojo.*;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
@@ -67,7 +64,13 @@ public interface AdminMapper {
      * 修改用户账号状态
      */
     @Update("UPDATE user SET status=#{userStatus} WHERE user_id=#{userId}")
-   User updateStatus(int userStatus,String userId);
+   boolean updateStatus(int userStatus,String userId);
+
+    /**
+     * 查看用户账号状态
+     */
+    @Select("SELECT status from user where user_id=#{userId}")
+    Integer searchStatus(String userId);
 
     /**
      * 重置用户密码
@@ -94,14 +97,16 @@ public interface AdminMapper {
     List<ProductInfo> searchByProductCategory(String productCategory);
 
 
-
-
-
-
     /**
      * 删除违规商品
      */
     @Delete("delete from product_info WHERE product_id=#{productId}")
     Integer deleteProduct(String productId);
+
+    /**
+     * 根据订单号查询销售订单
+     */
+    @Select("select * from trade_record WHERE trade_id=#{tradeId}")
+    TradeRecord searchByTradeId(String tradeId);
 
 }

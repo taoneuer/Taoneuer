@@ -1,10 +1,7 @@
 package com.sly.c2cpay.service.imp;
 
 import com.sly.c2cpay.mapper.AdminMapper;
-import com.sly.c2cpay.pojo.Admin;
-import com.sly.c2cpay.pojo.Goods;
-import com.sly.c2cpay.pojo.ProductInfo;
-import com.sly.c2cpay.pojo.User;
+import com.sly.c2cpay.pojo.*;
 import com.sly.c2cpay.service.AdminService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -87,15 +84,28 @@ public class AdminServiceImp implements AdminService {
     @Override
     public Integer delete(String userId){ return adminMapper.delete(userId);}
 
+
+
     /**
      * 修改用户账号状态
-     * @param status
      * @param userID
      * @return
      */
     @Override
-    public User changeStatus(int status,String userID){return adminMapper.updateStatus(status,userID);}
+    public boolean changeStatus(String userID)
+    {
+        if(adminMapper.searchStatus(userID)==0)
+            return adminMapper.updateStatus(1,userID);
+        else
+            return adminMapper.updateStatus(0,userID);
+    }
 
+    @Override
+
+    public Integer searchStatus(String userID)
+    {
+        return adminMapper.searchStatus(userID);
+    }
     @Override
     public boolean resetPassword(String userId){return adminMapper.resetPassword(userId);}
 
@@ -116,6 +126,12 @@ public class AdminServiceImp implements AdminService {
      */
     @Override
     public Integer deleteProduct(String productId){return adminMapper.deleteProduct(productId);}
+
+    /**
+     * 根据订单号查询销售订单
+     */
+    @Override
+    public TradeRecord searchByTradeId(String tradeId){return adminMapper.searchByTradeId(tradeId);}
 
 
 }
