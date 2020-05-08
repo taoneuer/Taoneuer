@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>注册</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <!--<link rel="stylesheet" type="text/css" href="../css/common.css" />-->
+        <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css" />
+        <link rel="stylesheet" href="./css/zhuce.css" />
+        <script src="./js/vue.js"></script>
+        
+	</head>
+	<body>
+		<header>用户注册 </header>
+		<section id="vue-form">
+			<div>
+				<input type="text" class="r-name"  placeholder="用户名" id="user_id" v-on:blur="check"/>
+				<!-- <p class="name">此名称已经被占用</p> -->
+				<span id="s_username"></span>
+			</div>
+			<div>
+				<input type="text"  placeholder="姓名" id="user_name"/>
+			</div>
+			<div>
+				<input type="password" placeholder="密码"  id="pwd" v-on:blur="pwd"/>
+				<p class="pwd">8-16位大写字母+小写字母+数字</p>
+			</div>
+			<div>
+				<input type="password" placeholder="确认密码"  id="psd" v-on:blur="psd"/>
+				<p class="psd">密码不一致</p>
+			</div>
+            <div>
+				<input type="text"  placeholder="专业" id="major"/>
+			</div>
+			<div>
+				<input type="text"  placeholder="学号" id="student_id"/>
+			</div>
+			<div>
+				<input type="text"  placeholder="学院" id="institute"/>
+			</div>
+			<div>
+				<input type="text"  placeholder="地址" id="address"/>
+			</div>
+			<input type="button" value="注册" id="sub" />
+			<!--<input type="button" value="去登录" id="dld" />-->
+		<!-- </footer> -->
+		</section>
+		<script src="./js/jquery.min.js"></script>
+		<script src="./js/jquery.cookie.js"></script>
+		<script src="./js/zhuce.js"></script>
+	</body>
+</html>

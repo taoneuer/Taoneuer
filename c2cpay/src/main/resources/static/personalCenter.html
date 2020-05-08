@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>后台用户中心</title>
+		<link rel="stylesheet" href="./css/bootstrap.min.css">
+		<link rel="stylesheet" href="./css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="./css/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="./css/personalCenter.css" />
+		<link rel="stylesheet" href="./css/buycart-personal.css"/>
+		<style>
+			.container{padding-top:10px}
+			body {
+				padding-top: 70px;
+			}
+			body a{
+				 color: #62ab00;
+			 }
+			body a:hover,a:visited, a:link, a:active{
+				color: #62ab00;
+				text-decoration: none;
+			}
+
+			.xust-header{
+				padding: 5px 30px 5px 0;
+				/*background: #ffffff;*/
+				box-shadow: #666 0 0 10px;
+				background-color: #62ab00;
+			}
+			.btn-download {
+				margin-top: 7px;
+				padding-right: 20px;
+			}
+			.btn-download button {
+				margin-right: 10px;
+			}
+			body .xust-title {
+				color: #222222;
+				font-size: 22px;
+				font-weight: bold;
+			}
+			.xust-title:hover{
+				color: #222222;
+			}
+			.xust{
+				color: #ffffff;
+				padding-left: 4px;
+				font-size: 24px;
+			}
+			.xust-en {
+				color: #ffffff;
+				font-size: 16px;
+				padding-left: 5px;
+				margin-right: 50px;
+			}
+			.my-home{
+				color: #ffffff;
+				font-size: 28px;
+			}
+			.done{
+				display: none;
+			}
+			.change-main{
+				width: 600px;
+				height: 450px;
+				background: rgba(255,255,255,0.8);
+				margin: 150px 0 0 20px;
+				position: relative;
+				padding-top: 150px;
+			}
+			.pic-box{
+				position: absolute;
+				top: 0;
+				left: 50%;
+				transform: translate(-50%,-30%);
+			}
+			.change-pic-btn{
+				margin-top: 30px;
+				margin-left: 2px;
+				font-size: 16px;
+
+			}
+
+			#head-pic{
+				width: 100px;
+				height: 100px;
+			}
+			.banner .title{
+				color: #004d40;
+				font-size: 20px;
+			}
+			.submit-info{
+				margin: 20px 0 0 100px;
+			}
+			.close-info{
+				margin: 20px 0 0 20px;
+			}
+			tbody th{
+				text-align: center;
+			}
+			.catbox table .checkbox {
+				/*border: none;*/
+				/*width: 100px;*/
+				/*height: 140px;*/
+			}
+			.catbox table tbody .checkbox{
+				width: 100px;
+				height: 140.8px;
+				line-height: 140.8px;
+				margin: 0;
+			}
+
+			.catbox table td,th {
+				text-align: center;
+			}
+			.quan{
+				width: 100px;
+			}
+			.catbox table tbody .check-one{
+				margin-top: 50px;
+				/*margin-left: 1px;*/
+			}
+			.add-address{
+				padding-top: 20px;
+			}
+			.add-address-btn{
+				margin-left: 700px;
+				margin-bottom: 20px;
+			}
+		</style>
+	</head>
+	<body>
+	<div id="cover" style="min-height: 639px;">
+		<!-----header部分------->
+		<div class="container-fluid">
+			<!--顶部菜单栏-->
+			<div class="row xust-top">
+				<nav class="navbar navbar-fixed-top xust-header" role="navigation" id="xust-nav">
+					<div class="navbar-header">
+						<a class="navbar-brand xust-title" href="homepage.html">
+							<i class="fa fa-home my-home" aria-hidden="true"></i>
+							<span class="xust">淘NEUER </span>二手工坊
+						</a>
+					</div>
+
+<!--					<div class="navbar-right btn-download">
+						<div class="done">
+							<button class="btn btn-success" id="username"><i class="fa fa-user-o"></i><span id="user"></span></button>
+							<a class="exit" data-toggle="modal" href="#exitModel">退出</a>
+						</div>
+						<div class="undone">
+							<button id="userSubmit" type="button" class="btn btn-success" hidden="hidden">登录</button>
+							<button id="register" type="button" class="btn btn-success" hidden="hidden">注册</button>
+						</div>
+					</div>-->
+
+				</nav>
+			</div>
+		</div>
+		<!-----顶部菜单栏结束------->
+		<div class="header">
+			<div class="user-info">
+				<div class="w1200">
+					<div class="user-headface">
+						<img class="user-headImg" src="./images/user_face.jpg"/>
+					</div>
+					<div class="user-account">
+						<p class="tip">您好，<span class="head-username"></span></p>
+						<p class="account">
+							<span>学号：<span class="head-account"></span></span>
+						</p>
+					</div>
+					<!--<a class="exit" data-toggle="modal" href="#myModal">退出</a>-->
+					<a href="pubGoods.html">
+					<button type="button" class="btn btn-success" style="float: right;margin: 32px;height: 39px;width: 120px">发布商品</button>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!-----header结束------->
+		<div class="main w1200">
+			<!--左侧列表--><!---->
+			<div class="left">
+				<ul class="sideBar">
+					<li class="ziliao">
+						<a href="#ziliao" data-toggle="tab" class="active">
+							<i class="icon iconfont icon-geren"></i>
+							个人资料
+						</a>
+					</li>
+					<li class="xianzhi">
+						<a href="#xianzhi" data-toggle="tab">
+							<i class="fa fa-folder-open-o" style="width: 26px;"></i>
+							我的闲置
+						</a>
+					</li>
+					<li class="goumai">
+						<a href="#goumai" data-toggle="tab">
+							<i class="fa fa-file-text-o" style="width: 26px;"></i>
+							我的购买
+						</a>
+					</li>
+					<li class="shoucang">
+						<a href="#shoucang" data-toggle="tab">
+							<i class="fa fa-opencart"></i>
+							我的收藏
+						</a>
+					</li>
+					<li class="dianzan">
+						<a href="#dianzan" data-toggle="tab">
+							<i class="fa fa-map-o" style="width: 26px;font-size: 17px; "></i>
+							我的点赞
+						</a>
+					</li>
+					<li>
+						<a href="#mima" data-toggle="tab">
+							<i class="icon iconfont icon-jilu"></i>
+							修改密码
+						</a>
+					</li>
+					<div>
+						<a href="#no-info" data-toggle="tab" id="no-link"></a>
+					</div>
+				</ul>
+			</div>
+			<!--右侧主体-->
+			<div class="right">
+				<div class="tap">
+					<span class="contTitle">个人资料</span>
+				</div>
+				<div class="container tab-content">
+
+					<!-- 个人资料-->
+					<div class="tab-pane fade active in row goods-list" id="ziliao">
+						<form class="form-horizontal" role="form">
+							<div class="form-group">
+								<label class="col-sm-2 control-label">专业</label>
+								<div class="col-sm-10">
+									<p class="form-control-static zl_major"></p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">学院</label>
+								<div class="col-sm-10">
+									<p class="form-control-static zl_institute"></p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">地址</label>
+								<div class="col-sm-10">
+									<p class="form-control-static zl_address"></p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">认证</label>
+								<div class="col-sm-10">
+									<p class="form-control-static zl_certification"></p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">交易数量</label>
+								<div class="col-sm-10">
+									<p class="form-control-static zl_tradeNum"></p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">用户名</label>
+								<div class="col-sm-10">
+									<p class="form-control-static zl_user_id"></p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">姓名</label>
+								<div class="col-sm-10">
+									<p class="form-control-static zl_user_name"></p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">学号</label>
+								<div class="col-sm-10">
+									<p class="form-control-static zl_student_id"></p>
+								</div>
+							</div>
+						</form>
+					</div>
+
+					<!-- 我的闲置-->
+					<div class="tab-pane row fade" id="xianzhi">
+
+					</div>
+
+					<!-- 我的购买-->
+					<div class="tab-pane row fade goods-list" id="goumai">
+
+					</div>
+
+					<!--我的收藏-->
+					<div class="tab-pane row fade" id="buycart">
+
+					</div>
+
+					<!--我的点赞-->
+					<div class="tab-pane row fade goods-list" id="dianzan">
+
+					</div>
+
+					<!--修改密码-->
+					<div class="tab-pane row fade goods-list" id="mima">
+						<form class="form-horizontal">
+							<div class="form-group">
+								<label for="inputPassword1" class="col-sm-3 control-label">请输入新的密码</label>
+								<div class="col-sm-6">
+									<input type="password" class="form-control" id="inputPassword1" placeholder="输入新密码">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputPassword2" class="col-sm-3 control-label">再次确认密码</label>
+								<div class="col-sm-6">
+									<input type="password" class="form-control" id="inputPassword2" placeholder="再次输入新密码">
+									<span id="s_password"></span>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-offset-2 col-sm-10">
+									<button type="submit" class="btn btn-default" id="sub_password">提交</button>
+									<span id="s_submit"></span>
+								</div>
+							</div>
+						</form>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 模态框-->
+	<!--	<div id="exitModel" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                &lt;!&ndash; 模态内容 &ndash;&gt;
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">账号退出</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>您确定要登出该账号吗？</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" id="quit" class="btn btn-primary">退出</button>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+
+	<script src="./js/jquery.min.js"></script>
+	<script src="./js/jquery.cookie.js"></script>
+	<script src="./js/bootstrap.min.js"></script>
+	<script src="./js/template-web.js"></script>
+	<script src="./js/personalCenter.js"></script>
+	<script src="./js/pubgoods.js"></script>
+
+	<!--模板-->
+	<script id="my-xianzhi-template" type="text/html">
+		{{each list as value i}}
+		<div class="col-md-3 col-sm-3 col-xs-6">
+			<div class="card col-md-10 col-sm-10 col-xs-10" data-id={{value.product_id}}>
+				<!--显示图片-->
+				<div class="card-image">
+					<img src="{{value.image_url}}" />
+				</div>
+				<div class="card-content">
+					<!--显示商品名字-->
+					<h4 class="name" title={{value.product_name}}>{{value.product_name}}</h4>
+					<!--显示商品价格、原价、开始时间-->
+					<div class="row">
+						<span class="col-md-5 col-xs-5 col-sm-5 price">{{value.product_price}}
+						</span>
+						<span class="col-md-7 col-xs-7 col-sm-7 time text-right">{{value.product_detail}}</span>
+						<button  onclick="getItemDetail({{value.product_id}})"> 查看详细</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		{{/each}}
+	</script>
+	</body>
+</html>

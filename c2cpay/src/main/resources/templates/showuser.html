@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>展示用户</title>
+</head>
+<body>
+<input type="submit" value="查看">
+<form action="@{/deleteuser/}+${deleteuser.id}" method="post">
+    　　<input type="hidden" name="_method" value="delete"/>
+    　　<button type="submit" class="btn btn-sm btn-danger">删除</button>
+</form>
+</body>
+</html>

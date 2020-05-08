@@ -1,0 +1,27 @@
+package  com.sly.c2cpay.pojo;
+
+import java.io.Serializable;
+
+public class Admin implements Serializable {
+  private Integer id;
+  private String adminId;
+  private String adminPassword;
+  public Integer getId() {
+    return id;
+  }
+  public void setId(Integer id) {
+    this.id = id;
+  }
+  public String getAdminId() {
+    return adminId;
+  }
+  public void setAdminId(String adminId) {
+    this.adminId = adminId;
+  }
+  public String getAdminPassword() {
+    return adminPassword;
+  }
+  public void setAdminPassword(String adminPassword) {
+    this.adminPassword = adminPassword;
+  }
+ }

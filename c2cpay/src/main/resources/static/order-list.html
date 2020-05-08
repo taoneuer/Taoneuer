@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="UTF-8">
+    <title>后台系统</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="./css/font.css">
+    <link rel="stylesheet" href="./css/xadmin.css">
+    <script type="text/javascript" src="./js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="./lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="./js/xadmin.js"></script>
+    <script type="text/javascript" src="./js/Order.js" ></script>
+    <script type="text/javascript" src="./js/template-web.js"></script>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  
+  <body class="layui-anim layui-anim-up" onLoad="order_list()">
+    <div class="x-nav">
+      <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+    </div>
+    <div class="x-body">
+      <div class="layui-row">
+        <form class="layui-form layui-col-md12 x-so ">
+          
+          <input type="text" name="tradeID" id="tradeID" placeholder="请输入销售单号" autocomplete="off" class="layui-input">
+          <button class="layui-btn" type="button" onclick="search_order()"><i class="layui-icon">&#xe615;</i></button>
+        </form>
+      </div>
+      <xblock>
+        <span class="x-right" style="line-height:40px" id="order_length"></span>
+      </xblock>
+      <table class="layui-table" >
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>交易时间</th>
+			<th>交易状态</th>
+			<th>商品ID</th>
+			<th>买家ID</th>
+			<th>操作</th>
+            </tr>
+        </thead>
+        <tbody id="order_list">
+         
+       </tbody>
+      </table>
+      <!--<div class="page">
+        <div>
+          <a class="prev" href="">&lt;&lt;</a>
+          <a class="num" href="">1</a>
+          <span class="current">2</span>
+          <a class="num" href="">3</a>
+          <a class="num" href="">489</a>
+          <a class="next" href="">&gt;&gt;</a>
+        </div>
+      </div>
+	-->
+    </div>
+    <script id="order-template" type="text/html">
+	{{each list as value i}}
+	 <tr>
+            <td>{{value.tradeId}}</td>
+            <td>{{value.tradeTime}}</td>
+			<td>{{value.tradeTime}}</td>
+			<td>{{value.product_id}}</td>
+			<td>{{value.buyer_id}}</td>
+            <td class="td-manage">
+              <a title="删除" onclick="del_order(this)" href="javascript:;">
+                <i class="layui-icon">&#xe640;</i>
+              </a>
+            </td>
+     </tr>
+	{{/each}}
+	</script>
+
+    
+   
+  </body>
+
+</html>
