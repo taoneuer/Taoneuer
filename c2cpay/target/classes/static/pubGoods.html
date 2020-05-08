@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>发布商品</title>
+    <link rel="stylesheet" href="./css/font-awesome.min.css" />
+    <link rel="stylesheet" href="./css/userhome.css" />
+    <link rel="stylesheet" href="./css/user.css" />
+    <script type="text/javascript" src="./js/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/jquery.cookie.js"></script>
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+    <style>
+        .container{padding-top:10px}
+        body {
+    padding-top: 60px;
+}
+.xust-header{
+    padding: 5px 30px 5px 0;
+    background: #ffffff;
+    box-shadow: #666 0 0 10px;
+}
+.btn-download {
+    margin-top: 7px;
+    padding-right: 20px;
+}
+.btn-download button {
+    margin-right: 10px;
+}
+.xust-title {
+    color: #000000;
+    font-size: 22px;
+    font-weight: bold;
+}
+.xust{
+    color: #007bff;
+    padding-left: 4px;
+    font-size: 24px;
+}
+.xust-en {
+    color: #545b62;
+    font-size: 16px;
+    padding-left: 5px;
+    margin-right: 50px;
+}
+.my-home{
+	color: #007bff;
+	font-size: 28px;
+}
+.describle{
+	/*background: rgba(232,232,232,0.5);*/
+	padding: 10px;
+	font-size: 18px;
+	letter-spacing: 2px;
+	color: #292929;
+	text-indent: 2em;
+	font-family: "宋体";
+}
+
+    </style>
+</head>
+<body>
+
+<div id="cover" style="min-height: 639px;">
+    <!-----header部分------->
+    <div class="container-fluid">
+        <!--顶部菜单栏-->
+        <div class="row xust-top">
+            <nav class="navbar navbar-fixed-top xust-header" role="navigation" id="xust-nav">
+                <div class="navbar-header">
+                    <a class="navbar-brand xust-title" href="homepage.html">
+                        <i class="fa fa-home my-home" aria-hidden="true"></i>
+                        <span class="xust">淘NEUER </span>二手工坊</a>
+                </div>
+
+                <!--<div class="navbar-right btn-download">
+                    <div class="done">
+                        <button class="btn btn-primary" id="username"><i class="fa fa-user-o"></i> <span id="user"></span></button>
+                        <a class="exit" data-toggle="modal" href="#myModal">退出</a>
+                    </div>
+                    <div class="undone">
+                        <button id="userSubmit" type="button" class="btn btn-primary" hidden="hidden">登录</button>
+                        <button id="register" type="button" class="btn btn-primary" hidden="hidden">注册</button>
+                    </div>
+                </div>-->
+
+            </nav>
+        </div>
+    </div>
+<!-----header结束------->
+        <div id="user_content" style="margin-left: auto;">
+            <div class="basic">
+                <form style="margin-left: auto;" method="post" role="form" enctype="multipart/form-data" id="file-form">
+                    <h1 style="margin-left: 240px;">发布物品</h1>
+                    <hr style="margin-right: 40px;" />
+
+                    <div class="changeinfo">
+                        <span >物品名称:</span>
+                        <input class="in_info" type="text" name="product_name" id="goodsName" placeholder="请输入物品名" value=""/>
+                       
+                    </div>
+                    <div class="changeinfo">
+                        <span>出售价格:</span>
+                        <input class="in_info" type="text" name="product_price" id="price" placeholder="请输入出售价格" value=""/>
+                       
+                    </div>
+
+                    <div class="changeinfo">
+                        <span>物品类别:</span>
+                        <select class="in_info" name="product_category" id="catelogId"  style="width: 188px;font-size: 15px;">
+                            <option value="1" >闲置数码</option>
+                            <option value="2">校园代步</option>
+                            <option value="3">电器日用</option>
+                            <option value="4">图书教材</option>
+                            <option value="5">美妆衣物</option>
+                            <option value="6">运动棋牌</option>
+                            <option value="7">票券小物</option>
+                        </select>
+
+                    </div>
+                    <div class="changeinfo" id="dir">
+                        <span>商品描述:</span>
+                        <div class="sha">
+                            <div class="publ">
+                                <div class="pub_con">
+                                    <div class="text_goods">
+                                        <textarea ntype="text" style="vertical-align:top;outline:none;" name="product_detail"
+                                                  id="describe" placeholder="商品描述信息" class="goodsdescribe" style="OVERFLOW:hidden">
+                                        </textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+
+                    <input type="hidden" name="image_url" id="image_url" value=" ">
+                    <input type="hidden" name="owner_id" id="owner_id" value=" ">
+                </form>
+
+                <div class="changeinfo">
+                    <span>商品图片:</span>
+                    <div class="show_pic" style="margin-top: -50px;">
+                        <body>
+                        <form id="pic_register" action="/upLoadImg" enctype="multipart/form-data" method="post">
+                            上传文件：<input type="file" name="head_img"><br>
+                            <input id="button" type="button" value="上传">
+                        </form>
+                        </body>
+                    </div>
+                </div>
+
+                <hr />
+                <button type="button" class="setting-save" style="margin-top: 20px;margin-left:250px;background-color: blue;">
+                    发布物品
+                </button>
+            </div>
+        </div>
+</div>
+
+<!-- 模态框-->
+<!--<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        &lt;!&ndash; 模态内容 &ndash;&gt;
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">账号退出</h4>
+            </div>
+            <div class="modal-body">
+                <p>您确定要登出该账号吗？</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" id="quit" class="btn btn-primary">退出</button>
+            </div>
+        </div>
+    </div>
+</div>-->
+
+<script src="./js/pubgoods.js"></script>
+<script src="./js/common-download.js"></script>
+<script src="./js/jquery.cookie.js"></script>
+
+</body>
+</html>
